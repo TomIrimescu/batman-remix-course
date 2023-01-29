@@ -33,11 +33,13 @@ export async function action({ request }) {
   //   title: formData.get("title"),
   //   content: formData.get("content"),
   // };
-  //TODO Add validation...
+  // TODO Add validation...
   const existingNotes = await getStoredNotes();
   noteData.id = new Date().toISOString();
   const updatedNotes = existingNotes.concat(noteData);
   await storeNotes(updatedNotes);
+  //* test disabled button with 2 second delay
+  // await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
   return redirect("/notes");
 }
 
