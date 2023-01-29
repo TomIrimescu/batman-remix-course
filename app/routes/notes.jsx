@@ -33,7 +33,11 @@ export async function action({ request }) {
   //   title: formData.get("title"),
   //   content: formData.get("content"),
   // };
-  // TODO Add validation...
+
+  if (noteData.title.trim().length < 5) {
+    return { message: "Invalid titile - must be at least 5 characters long." };
+  }
+
   const existingNotes = await getStoredNotes();
   noteData.id = new Date().toISOString();
   const updatedNotes = existingNotes.concat(noteData);
@@ -43,6 +47,7 @@ export async function action({ request }) {
   return redirect("/notes");
 }
 
+//* Surfacing Styles
 export function links() {
   return [...newNoteLinks(), ...noteListLinks()];
 }
