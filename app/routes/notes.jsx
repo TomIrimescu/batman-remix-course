@@ -57,9 +57,16 @@ export async function action({ request }) {
   return redirect("/notes");
 }
 
-//* Surfacing Styles
+//* Surfacing styles up to route that use them
 export function links() {
   return [...newNoteLinks(), ...noteListLinks()];
+}
+
+export function meta() {
+  return {
+    title: "My Notes",
+    description: "These are all my notes.",
+  };
 }
 
 export function CatchBoundary() {
