@@ -30,6 +30,7 @@ export async function loader() {
   return notes;
   //* Remix does this under the hood
   // return new Response(JSON.stringify(notes), {headers: {"Content-Type": "application/json"}});
+
   //* Alternate response
   // return json(notes);
 }
